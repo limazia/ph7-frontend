@@ -1,3 +1,11 @@
+## [1.1.0](https://github.com/limazia/ph7-frontend/compare/v1.0.0...v1.1.0) (2025-10-03)
+
+### ✨ Recursos
+
+* enhance character filters with button for clearing all filters ([130d048](https://github.com/limazia/ph7-frontend/commit/130d048e0257b32c08af5c02c29f427e19bcd056))
+* handle 404 errors in useCharacters hook and return empty results ([547a0af](https://github.com/limazia/ph7-frontend/commit/547a0af4753312f53df8eff97395e88ec4c6d51e))
+* update QueryClient default options to include refetchOnWindowFocus setting ([b3322d4](https://github.com/limazia/ph7-frontend/commit/b3322d421a62bb031d34b98bed7d170a1b9978f8))
+
 ## 1.0.0 (2025-10-03)
 
 ### ✨ Recursos
