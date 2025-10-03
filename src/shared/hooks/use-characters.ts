@@ -19,15 +19,27 @@ export function useCharacters(params: UseCharactersParams = {}) {
     isLoading: isLoadingCharacters,
     isFetching: isFetchingCharacters,
     isError: isErrorCharacters,
+    error,
   } = useQuery({
     queryKey: ["characters", page, name, status, species, type, gender],
     queryFn: () => getCharacters({ page, name, status, species, type, gender }),
+    retry: (failureCount, error: any) => {
+      if (error?.response?.status === 404) {
+        return false;
+      }
+      return failureCount < 3;
+    },
   });
 
+  const is404Error = error?.response?.status === 404;
+  const emptyResult = is404Error
+    ? { results: [], info: { pages: 1, count: 0 } }
+    : null;
+
   return {
-    characters,
+    characters: emptyResult || characters,
     isLoadingCharacters,
     isFetchingCharacters,
-    isErrorCharacters,
+    isErrorCharacters: isErrorCharacters && !is404Error,
   };
 }
